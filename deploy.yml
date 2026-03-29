@@ -1,0 +1,18 @@
+name: My-First-Robot
+
+on:
+  push:
+    branches: [ main ] # Run whenever I save to the main branch
+
+jobs:
+  deploy-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copy my files
+        uses: actions/checkout@v3
+
+      - name: Put them on the internet
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ # Use the current folder
